@@ -13,15 +13,16 @@ class Usuario{
     }
 
     countMascotas(){
-        console.log(this.mascotas.lenght)
+        console.log(this.mascotas.length)
     }
 
     addBook(nombre, autor){
         this.libros.push(nombre,autor)
     }
     getBookNames(){
-         console.log(this.libros.lenght)
-        
+        this.libros.forEach(element => {
+            console.log(`${element.nombre}`);
+        });        
 
     }
 }
