@@ -1,15 +1,37 @@
-class Persona{
-    constructor(nombre,dni,genero,edad){
+class Usuario{
+    constructor(nombre,apellido,libros,mascotas){
         this.nombre=nombre;
-        this.dni=dni;
-        this.genero=genero;
-        this.edad=edad
+        this.apellido=apellido;
+        this.libros=libros;
+        this.mascotas=mascotas
     }
-    
+    getFullName(){
+       console.log(`Nombre completo ${this.nombre} ${this.apellido}`)
+    }
+    addMascota(mascota){
+        this.mascotas.push(mascota)
+    }
+
+    countMascotas(){
+        console.log(this.mascotas.lenght)
+    }
+
+    addBook(nombre, autor){
+        this.libros.push(nombre,autor)
+    }
+    getBookNames(){
+         console.log(this.libros.lenght)
+        
+
+    }
 }
 
-let persona1= new Persona("Julian",32323,"masculino",22)
-let personas=[]
+let usuario1= new Usuario("Julian","Colli",[{nombre:"Libro uno",autor:"borges"}],["gato"])
 
-personas.push(persona1)
-console.log(personas)
+console.log(usuario1)
+usuario1.getFullName()
+usuario1.addMascota("perro")
+usuario1.countMascotas()
+usuario1.addBook({nombre:"Mecanica del automotor", autor:"vicesat"})
+usuario1.getBookNames()
+console.log(usuario1)
