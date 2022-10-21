@@ -16,8 +16,8 @@ class Usuario{
         console.log(this.mascotas.length)
     }
 
-    addBook(nombre, autor){
-        this.libros.push(nombre,autor)
+    addBook({ nombre, autor }){
+        this.libros.push({ nombre,autor })
     }
     getBookNames(){
         this.libros.forEach(element => {
