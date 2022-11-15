@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/juliancolli03/backend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6"
   }
 }
