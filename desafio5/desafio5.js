@@ -2,7 +2,7 @@ const express = require('express')
 
 const app = express()
 
-const personas = []
+const productos = []
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
@@ -12,13 +12,13 @@ app.set('view engine', 'ejs')
 // get
 
 app.get('/productos', (req, res) => {
-    res.render('inicio', {personas})
+    res.render('inicio', {productos})
 })
 
 // post
 
 app.post('/productos', (req, res) => {
-    personas.push(req.body)
+    productos.push(req.body)
     res.redirect('/productos')
 })
 
