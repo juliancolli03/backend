@@ -1,0 +1,23 @@
+
+
+
+
+h1(style='color:blue;') Ingrese productos
+br
+form(action='/productos' method='post')
+  .form-group
+    label(for='nombre')
+      b Nombre
+    input#nombre.form-control(type='text' name='nombre')
+  .form-group
+    label(for='categoria')
+      b Categoria
+    input#categoria.form-control(type='text' name='categoria')
+  .form-group
+    label(for='precio')
+      b Precio
+    input#precio.form-control(type='number' name='precio')
+  button.btn.btn-success.mt-3.mb-5 Enviar
+
+
+    block content

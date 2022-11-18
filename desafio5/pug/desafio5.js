@@ -1,22 +1,23 @@
 const express = require('express')
-const handlebars = require('express-handlebars')
 
 const app = express()
-
-app.engine('handlebars', handlebars.engine())
 
 const productos = []
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-app.set('view engine', 'ejs')
+
+app.set('views', './views')
+
+app.set('view engine', 'pug')
 
 // get
 
 app.get('/productos', (req, res) => {
-    res.render('inicio', {productos})
+    res.render('layout', {productos})
 })
+
 
 // post
 

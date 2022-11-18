@@ -1,0 +1,22 @@
+
+
+
+
+h2(style='color:crimson;') Historial
+
+    if products && products.length > 0
+ .table-responsive
+  table.table.table-dark
+tr(style='color: yellow;')
+  th Nombre
+  th Categoria
+  th Precio
+            each product in products
+            tr
+                td=producto.nombre
+                td=producto.categoria
+                td=producto.precio
+ else
+h3.alert.alert-danger no se encontraron datos
+
+    block content

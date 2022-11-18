@@ -9,8 +9,9 @@ const productos = []
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.set('views', './views')
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'handlebars')
 
 // get
 
@@ -26,3 +27,6 @@ app.post('/productos', (req, res) => {
 })
 
 app.listen(8080)
+
+
+// prefiero el motor de plantillas ejs ya que tiene una sintaxis ssencilla y es rapido de aprender
