@@ -1,28 +1,22 @@
-{{#> body }}
+{{!-- {{#> body }} --}}
   <h1>Vista de Productos</h1>
 
-  {{#if products}}
+  {{#if productos}}
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
           <th>NOMBRE</th>
           <th>PRECIO</th>
-          <th>FOTO</th>
+          <th>categoria</th>
         </tr>
       </thead>
       <tbody>
-        {{#each products}}
+        {{#each productos}}
         <tr>
           <td>{{{title}}}</td>
           <td>{{{price}}}</td>
-          <td>
-            <img
-              src="{{{thumbnail}}}"
-              alt="{{{title}}}"
-              width="100px"
-            />
-          </td>
+                    <td>{{{categoria}}}</td>
         </tr>
         {{/each}}
       </tbody>
@@ -31,4 +25,3 @@
   {{else}}
     <div class="alert alert-danger">No hay productos</div>
   {{/if}}       
-{{/body}}

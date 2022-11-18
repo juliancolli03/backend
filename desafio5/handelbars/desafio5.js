@@ -3,7 +3,13 @@ const handlebars = require('express-handlebars')
 
 const app = express()
 
-app.engine('handlebars', handlebars.engine())
+app.engine('handlebars', handlebars.engine(
+    {
+        extname: '.handlebars',
+        defaultLayout: 'inicio.handlebars',
+        layoutsDir: __dirname + '/views/'
+        }
+))
 
 const productos = []
 
@@ -16,14 +22,18 @@ app.set('view engine', 'handlebars')
 // get
 
 app.get('/productos', (req, res) => {
-    res.render('inicio', {productos})
+    res.render('historial', {productos})
+})
+
+app.get('/', (req, res) => {
+    res.render('form.handlebars')
 })
 
 // post
 
 app.post('/productos', (req, res) => {
     productos.push(req.body)
-    res.redirect('/productos')
+    res.redirect('/')
 })
 
 app.listen(8080)

@@ -3,7 +3,7 @@
   {{#if error}}
     <div class="alert alert-danger">{{error}}</div>
   {{/if}}
-  <form action="/product" method="POST">
+  <form action="/productos" method="POST">
     <div class="mb-3">
       <label for="title" class="form-label">Nombre</label>
       <input
@@ -12,6 +12,14 @@
         name="title"
         class="form-control"
         value="{{title}}"
+      />
+      <label for="categoria" class="form-label">Categoria</label>
+      <input
+        type="text"
+        id="categoria"
+        name="categoria"
+        class="form-control"
+        value="{{categoria}}"
       />
     </div>
     <div class="mb-3">
@@ -24,7 +32,7 @@
         value="{{price}}"
       />
     </div>
-    <div class="mb-3">
+    {{!-- <div class="mb-3">
       <label for="thumbnail" class="form-label">Foto</label>
       <input
         type="text"
@@ -33,7 +41,7 @@
         class="form-control"
         value="{{thumbnail}}"
       />
-    </div>
+    </div> --}}
     <button class="btn btn-success">Crear Producto</button>
   </form>
 {{/body}}
