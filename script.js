@@ -1,28 +1,28 @@
 const express = require('express')
-const handlebars = require('express-handlebars')
+const { Server: HttpServer } = require('http')
+const { Server: IOServer } = require('socket.io')
 
 const app = express()
+const httpServer = new HttpServer(app)
+const io = new IOServer(httpServer)
+app.use(express.static('public'))
 
-app.engine('handlebars', handlebars.engine())
+const mensajes = []
 
-const productos = []
 
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
+io.on('connection', socket => {
+    console.log('Nuevo cliente conectado')
 
-app.set('view engine', 'ejs')
+    socket.emit('mensajes', mensajes)
 
-// get
+    socket.on('mimensaje', data => {
+        mensajes.push({socketid: socket.id, mensaje: data})
 
-app.get('/productos', (req, res) => {
-    res.render('inicio', {productos})
+        io.sockets.emit('mensajes', mensajes)
+    })
 })
 
-// post
-
-app.post('/productos', (req, res) => {
-    productos.push(req.body)
-    res.redirect('/productos')
+const PORT = 8080 
+httpServer.listen(PORT, () => {
+    console.log('escuchando en el 8080')
 })
-
-app.listen(8080)
