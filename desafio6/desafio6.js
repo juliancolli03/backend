@@ -1,32 +1,61 @@
 const express = require('express')
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
+const Contenedor = require("../desafio2 y desafio3/desafio2Y3")
 
 const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
-const productos = []
+const mensajes = []
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.set('view engine', 'ejs')
 
-// get
+const guardarChat = new Contenedor("chat")
 
-app.get('/productos', (req, res) => {
-    res.render('inicio', {productos})
+
+app.get('/productos', async (req, res) => {
+    const chat = await guardarChat.getAll()
+
+    res.render('inicio', {mensajes}, [chat] )
 })
 
-// post
+app.use(express.static("public"))
 
-app.post('/productos', (req, res) => {
-    productos.push(req.body)
-    res.redirect('/productos')
+
+io.on('connection', async socket =>{
+    await guardarChat.save(socket)
+
+    const historialMensajes = await guardarChat.getAll()
+
+    console.log('Un cliente se ha conectado')
+
+    socket.emit('messages', mensajes)
+    socket.emit("chat",guardarChat)
+
+    socket.on('new-message', data => {
+        mensajes.push(data)
+
+        io.sockets.emit('messages', mensajes)
+    })
+
+    socket.on('new-msg', async (data) => {
+        await guardarChat.save(data)
+        
+        const historialMensajes = await guardarChat.getAll()
+    
+        io.sockets.emit('mensajes', historialMensajes)
+      })
 })
 
-app.listen(8080)
 
 
-// prefiero el motor de plantillas ejs ya que tiene una sintaxis ssencilla y es rapido de aprender
+const PORT = 8080
+
+httpServer.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`)
+})
+

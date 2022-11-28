@@ -109,93 +109,95 @@ class Container {
 }
 
 // Create a new container
-const products = new Container('products')
+// const products = new Container('productss')
 
-// Create test data
-const iphoneX = {
-  title: 'Iphone X',
-  price: 700,
-  thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
-}
-const iphone11 = {
-  title: 'Iphone 11',
-  price: 800,
-  thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
-}
-const iphone12 = {
-  title: 'Iphone 12',
-  price: 900,
-  thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
-}
-const iphone13 = {
-  title: 'Iphone 13',
-  price: 1000,
-  thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
-}
+// // Create test data
+// const iphoneX = {
+//   title: 'Iphone X',
+//   price: 700,
+//   thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
+// }
+// const iphone11 = {
+//   title: 'Iphone 11',
+//   price: 800,
+//   thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
+// }
+// const iphone12 = {
+//   title: 'Iphone 12',
+//   price: 900,
+//   thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
+// }
+// const iphone13 = {
+//   title: 'Iphone 13',
+//   price: 1000,
+//   thumbnail: 'https://cdn-icons-png.flaticon.com/512/1088/1088537.png',
+// }
 
-// Hemos creado esta función para probar todos los métodos de la clase Container,
-// es una función de espera asíncrona porque los métodos devuelven promesas y necesitamos
-// esperar hasta que se resuelvan las promesas para verificar los resultados
-const prueba = async () => {
-  const iphoneXID = await products.save(iphoneX)
-  console.log(iphoneXID)
-  const iphone11ID = await products.save(iphone11)
-  console.log(iphone11ID)
-  const iphone12ID = await products.save(iphone12)
-  console.log(iphone12ID)
-  const iphone13ID = await products.save(iphone13)
-  console.log(iphone13ID)
+// // Hemos creado esta función para probar todos los métodos de la clase Container,
+// // es una función de espera asíncrona porque los métodos devuelven promesas y necesitamos
+// // esperar hasta que se resuelvan las promesas para verificar los resultados
+// const prueba = async () => {
+//   const iphoneXID = await products.save(iphoneX)
+//   console.log(iphoneXID)
+//   const iphone11ID = await products.save(iphone11)
+//   console.log(iphone11ID)
+//   const iphone12ID = await products.save(iphone12)
+//   console.log(iphone12ID)
+//   const iphone13ID = await products.save(iphone13)
+//   console.log(iphone13ID)
 
-  const product2 = await products.getById(2)
-  console.log(product2)
+//   const product2 = await products.getById(2)
+//   console.log(product2)
 
-  const product10 = await products.getById(10)
-  console.log(product10)
+//   const product10 = await products.getById(10)
+//   console.log(product10)
 
-  const allProducts = await products.getAll()
-  console.log(allProducts)
+//   const allProducts = await products.getAll()
+//   console.log(allProducts)
 
-  await products.deleteById(4)
-  await products.deleteById(12)
+//   await products.deleteById(4)
+//   await products.deleteById(12)
 
-  // await products.deleteAll()
+//   // await products.deleteAll()
 
-  const allProductsEmpty = await products.getAll()
-  console.log(allProductsEmpty)
-}
+//   const allProductsEmpty = await products.getAll()
+//   console.log(allProductsEmpty)
+// }
 
-prueba()
+// prueba()
 
-// desafio 3
-const express = require("express")
+// // desafio 3
+// const express = require("express")
 
-const app = express()
+// const app = express()
 
-app.get("/productoRandom", (req, res) => {
-  products
-    .getAll()
-    .then((data) => {
-      const random = Math.floor(Math.random() * data.length);
-      res.send(data[random]);
-    })
-    .catch((error) => {
-      res.send(console.log("error"+error));
-    })
-});
+// app.get("/productoRandom", (req, res) => {
+//   products
+//     .getAll()
+//     .then((data) => {
+//       const random = Math.floor(Math.random() * data.length);
+//       res.send(data[random]);
+//     })
+//     .catch((error) => {
+//       res.send(console.log("error"+error));
+//     })
+// });
 
-app.get("/productos", (req, res) =>{
+// app.get("/productos", (req, res) =>{
    
-  products
-  .getAll()
-  .then((data) => res.send(data))
-  .catch((error) => {
-    res.send(console.log("error"+error));
-  })
+//   products
+//   .getAll()
+//   .then((data) => res.send(data))
+//   .catch((error) => {
+//     res.send(console.log("error"+error));
+//   })
 
-})
+// })
 
-const server =app.listen(8080,() =>{
-  console.log("andando 0km")
-})
+// const server =app.listen(8080,() =>{
+//   console.log("andando 0km")
+// })
 
-server.on("error", error=> console.log("hubo un eror +", error))
+// server.on("error", error=> console.log("hubo un eror +", error))
+
+module.exports = Container
