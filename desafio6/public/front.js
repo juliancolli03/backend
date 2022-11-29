@@ -1,6 +1,6 @@
 const socket = io()
 
-socket.on("new-msg",data=>{
+socket.on("chat",data=>{
     const html = data.map(msj=>{
         return  `<div>
         <strong>${msj.email}</strong>
@@ -9,7 +9,7 @@ socket.on("new-msg",data=>{
         </div>`
     })
     .join(" ")
-    document.getElementById("messages").innerHTML = html
+    document.getElementById("messagesDeUsers").innerHTML = html
 
     })
 

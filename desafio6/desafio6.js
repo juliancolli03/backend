@@ -20,21 +20,21 @@ const guardarChat = new Contenedor("chat")
 app.get('/productos', async (req, res) => {
     const chat = await guardarChat.getAll()
 
-    res.render('inicio', {mensajes}, [chat] )
+    res.render('inicio', {mensajes,chat} )
 })
 
 app.use(express.static("public"))
 
 
 io.on('connection', async socket =>{
-    await guardarChat.save(socket)
+    // await guardarChat.save(socket)
 
     const historialMensajes = await guardarChat.getAll()
 
     console.log('Un cliente se ha conectado')
 
     socket.emit('messages', mensajes)
-    socket.emit("chat",guardarChat)
+    socket.emit("chat",historialMensajes)
 
     socket.on('new-message', data => {
         mensajes.push(data)
@@ -58,4 +58,3 @@ const PORT = 8080
 httpServer.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`)
 })
-

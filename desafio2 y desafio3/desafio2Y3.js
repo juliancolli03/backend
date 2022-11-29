@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-class Container {
+ class Container {
   constructor(name) {
     this.name = name
   }

@@ -1,11 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  
+  
   "description": "",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliancolli03/backend.git"
@@ -18,10 +20,14 @@
   },
   "homepage": "https://github.com/juliancolli03/backend#readme",
   "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "pug": "^3.0.2",
-    "socket.io": "^4.5.3"
+    "socket.io": "^4.5.3",
+    "typescript": "^4.9.3"
   }
 }
