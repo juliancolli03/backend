@@ -1,13 +1,10 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  
-  
-  "description": "",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliancolli03/backend.git"
@@ -29,5 +26,7 @@
     "pug": "^3.0.2",
     "socket.io": "^4.5.3",
     "typescript": "^4.9.3"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

@@ -1,6 +1,7 @@
 const fs = require('fs')
+// import fs from "fs"
 
- class Container {
+class Container {
   constructor(name) {
     this.name = name
   }
@@ -200,4 +201,6 @@ const fs = require('fs')
 
 // server.on("error", error=> console.log("hubo un eror +", error))
 
-module.exports = Container
+ module.exports = Container
+
+// export default Container
