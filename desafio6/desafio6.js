@@ -54,10 +54,10 @@ io.on('connection', async socket =>{
 
     socket.on('new-msg',  (data) => {
          guardarChat.save(data)
-        
-        const historialMensajes =  guardarChat.getAll()
+        chats.push(data)
+        // const historialMensajes =  guardarChat.getAll()
     
-        io.sockets.emit('mensajes', historialMensajes)
+        io.sockets.emit('chat', chats)
       })
 })
 
