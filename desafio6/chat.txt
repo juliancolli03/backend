@@ -1,50 +1,9 @@
 [
   {
-    "email": "c@gmail.com",
-    "texto": "12",
+    "email": "ponetusdatos@gmail.com",
+    "texto": "hola",
     "time": "29/11/2022, 22:25:19",
     "id": 1
-  },
-  {
-    "email": "sasaSAASSASASA@Gmail.com21",
-    "texto": "21212112",
-    "time": "29/11/2022, 22:27:26",
-    "id": 2
-  },
-  {
-    "email": "sasaSAASSASASA@Gmail.com21",
-    "texto": "21212112",
-    "time": "29/11/2022, 22:27:27",
-    "id": 3
-  },
-  {
-    "email": "sasasa@gmail.ocm",
-    "texto": "21",
-    "time": "29/11/2022, 22:30:51",
-    "id": 4
-  },
-  {
-    "email": "cc@gmail.com",
-    "texto": "21",
-    "time": "30/11/2022, 9:35:12",
-    "id": 5
-  },
-  {
-    "email": "sss@gmail.com",
-    "texto": "2",
-    "time": "30/11/2022, 9:49:15",
-    "id": 6
-  },
-  {
-    "email": "sss@gmail.com",
-    "texto": "2",
-    "time": "30/11/2022, 9:49:16",
-    "id": 7
-  },
-  {
-    "email": "ssassasaas@gmail.com",
-    "texto": "2121",
-    "time": "30/11/2022, 9:49:38",
-    "id": 8
   }
+  
 ]

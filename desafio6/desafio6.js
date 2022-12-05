@@ -53,14 +53,13 @@ io.on('connection', async socket =>{
     })
 
     socket.on('new-msg',  (data) => {
-         guardarChat.save(data)
-        chats.push(data)
-        // const historialMensajes =  guardarChat.getAll()
-    
-        io.sockets.emit('chat', chats)
-      })
+        guardarChat.save(data)
+       chats.push(data)
+       // const historialMensajes =  guardarChat.getAll()
+   
+       io.sockets.emit('chat', chats)
+     })
 })
-
 
 
 const PORT = 8080
