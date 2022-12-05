@@ -1,7 +1,12 @@
 const Carrito = require('../containers/carrito');
+const productos = require("../containers/containerProductos")
+
 
 const contenedorCarrito = new Carrito('carritos.txt');
 contenedorCarrito.checkIfFileExists();
+
+const contenedorProductos = new productos("productos.txt")
+contenedorProductos.checkIfFileExists()
 
 const postCarrito = (req,res) =>{
     const carrito = contenedorCarrito.postCarrito()
@@ -21,7 +26,7 @@ const postProductoCarrito = (req,res) =>{
     const idProducto = req.body.id;
     const idCarrito = req.params.id;
 
-    const producto = contenedorProducto.getProductoById(idProducto);
+    const producto = contenedorProductos.getProductoById(idProducto);
 
     if(producto.error != undefined) {
         res.json(producto);
