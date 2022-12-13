@@ -11,9 +11,9 @@ class ClienteSQL {
             .then(() => {
                 return this.knex.schema.createTable('prodlist', table => {
                     table.increments('id').primary()
-                    table.string('title', 20).notNullable()
-                    table.float('price').notNullable()
-                    table.string('thumbnail', 30).notNullable()
+                    table.string('username', 20).notNullable()
+                    table.float('precio').notNullable()
+                    table.string('text', 30).notNullable()
                 })
             .catch(() => {
                 console.log("ya existe")

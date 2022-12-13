@@ -1,6 +1,7 @@
-const { config } = require ("./conexDB/sqlLiteconn")
-const ClienteSQL = require ("./container/sqlcontainer.js")
-
+const { options } = require ("./conexDB/sqlLiteconn")
+const { config } = require ("./conexDB/mysqlconn")
+const ClienteSQL = require ("./container/chatscontainer")
+const ProductSQL = require("./container/sqlcontainer")
 
 const express = require('express')
 const { Server: HttpServer } = require('http')
@@ -11,8 +12,8 @@ const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
-const mensajes = []
-let chats = []
+let mensajes = []
+ let chats = []
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
@@ -20,12 +21,14 @@ app.use(express.json())
 app.set('view engine', 'ejs')
 
 // const guardarChat = new Contenedor("chat")
-const sql = new ClienteSQL(config)
+const sql = new ClienteSQL(options)
+const prodSQL = new ProductSQL(config)
 
-
-const traerChat = async ()=>{
-    chats = await sql.insertarArticulos()
-}
+sql.crearTabla()
+prodSQL.crearTabla()
+// const traerChat = async ()=>{
+//     chats = await sql.insertarArticulos()
+// }
 
 app.get('/productos', async (req, res) => {
     // const chat = await guardarChat.getAll()
@@ -44,18 +47,25 @@ io.on('connection', async socket =>{
     console.log('Un cliente se ha conectado')
 
     socket.emit('messages', mensajes)
-    traerChat().then(() => socket.emit('chat', chats))
+    // traerChat().then(() => socket.emit('chat', chats))
     // socket.emit("chat",historialMensajes)
 
-    socket.on('new-message', data => {
-        mensajes.push(data)
+    socket.on('new-message', async data => {
+        let insertarArticulos= await prodSQL.insertarArticulos(data)
+    insertarArticulos = await  prodSQL.listarArticulos()
+    
+    mensajes = insertarArticulos
 
         io.sockets.emit('messages', mensajes)
     })
 
-    socket.on('new-msg',  (data) => {
-        sql.listarArticulos(data)
-       chats.push(data)
+    socket.on('new-msg',  async (data) => {
+        
+      let insertarArticulos= await sql.insertarArticulos(data)
+    insertarArticulos = await  sql.listarArticulos()
+
+    chats = insertarArticulos
+    //    chats.push(data)
        // const historialMensajes =  guardarChat.getAll()
    
        io.sockets.emit('chat', chats)
@@ -70,4 +80,3 @@ httpServer.listen(PORT, () => {
 })
 
 
-console.log(sql)
