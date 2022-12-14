@@ -40,9 +40,10 @@ app.use(express.static("public"))
 
 
 io.on('connection', async socket =>{
-    // await guardarChat.save(socket)
-
-    // const historialMensajes = await guardarChat.getAll()
+    socket.on("connection", async =>{
+        sql.crearTabla()
+prodSQL.crearTabla()
+    })
 
     console.log('Un cliente se ha conectado')
 
@@ -70,7 +71,14 @@ io.on('connection', async socket =>{
    
        io.sockets.emit('chat', chats)
      })
+     socket.on("disconnect", async socket => {
+        console.log("desconcetado")
+        await prodSQL.close()
+      await sql.close()
+      console.log("desconcetado")
+    })
 })
+
 
 
 const PORT = 8080
