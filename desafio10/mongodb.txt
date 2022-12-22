@@ -1,8 +1,8 @@
 0- Ir a mi carpeta de bases de datos en mongo desde la terminal, asi:
- cd desktop cd mongodb,v2
+ cd desktop
 
 1- Iniciar Mongo en un CMD
-mongod --dbpath "C:\Users\Angela\Desktop\mongoDb,v2" 
+mongod --dbpath ./mongoDb,v2 
 
 2-Abrir otra terminal y poner
  
