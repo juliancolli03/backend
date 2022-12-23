@@ -1,5 +1,7 @@
 const admin = require('firebase-admin')
 
+admin.initializeApp()
+
  class FirebaseContainer {
   constructor(collection) {
     this.db = admin.firestore()

@@ -1,6 +1,6 @@
 const Producto = require('../containers/firebaseContainer');
 
-const contenedorProducto = new Producto();
+const contenedorProducto = new Producto("backend-b056f");
 
 
 const getProductos = (req, res) => {
@@ -12,7 +12,7 @@ const getProductos = (req, res) => {
         const productos = contenedorProducto.getAll();
         res.json(productos);
     } else {
-        const producto = contenedorProducto.getById(id);
+        const producto = contenedorProducto.updateById(id);
         console.log(producto);
         res.json(producto);
     }
@@ -31,7 +31,7 @@ const postProducto = (request, res) => {
         stock : request.body.stock,
     }
 
-    res.json(contenedorProducto.createProduct(newProducto));
+    res.json(contenedorProducto.add(newProducto));
 };
 
 const putProducto = (request, res) => {
@@ -47,7 +47,7 @@ const putProducto = (request, res) => {
         stock : request.body.stock,
     }
 
-    res.json(contenedorProducto.createProduct(request.params.id, updateProducto));
+    res.json(contenedorProducto.updateById(request.params.id, updateProducto));
 };
 
 const deleteProducto = (request, res) => {
