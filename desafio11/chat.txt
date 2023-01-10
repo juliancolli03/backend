@@ -1,9 +1,0 @@
-[
-  {
-    "email": "ponetusdatos@gmail.com",
-    "texto": "hola",
-    "time": "29/11/2022, 22:25:19",
-    "id": 1
-  }
-  
-]
