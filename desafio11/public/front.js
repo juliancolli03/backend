@@ -1,10 +1,11 @@
 const socket = io()
 
-socket.on("chat",data=>{
+socket.on("messages",data=>{
     const html = data.map(msj=>{
+
         return  `<div>
-        <strong>${msj.email}</strong>
-        <em>${msj.texto}</em>
+        <strong>${msj.autor.email}</strong>
+        <em>${msj.text}</em>
         <em>${msj.time}</em>
         </div>`
     })
@@ -13,53 +14,23 @@ socket.on("chat",data=>{
 
     })
 
-
-socket.on('messages', data => {
-    const html = data.map(msj => {
-        return `<div>
-        <strong>${msj.username}</strong>
-        <em>${msj.text}</em>
-        <em>${msj.precio}</em>
-        </div>`
-    })
-    .join(" ")
-
-    document.getElementById("messages").innerHTML = html
-})
-
-function addProductos() {
+function addMsj() {
     
     const message = {
-        username: document.getElementById("username").value,
-        text: document.getElementById("text").value,
-        precio: document.getElementById("precio").value
-    }
+        autor:{
+            email: document.getElementById("email").value,
+        },
+        text: document.getElementById("textoo").value,
+        time: new Date().toLocaleString()
 
+
+    }
+console.log(message)
     socket.emit('new-message', message)
 
     
 
-    return false
-
-
-        
-    
-}
-
-
-function addMsj() {
-    
-    const message = {
-        email: document.getElementById("email").value,
-        texto: document.getElementById("texto").value,
-        time: new Date().toLocaleString()
-    }
-
-    socket.emit('new-msg', message)
-
-    
-
-    return false
+    //  return false
 
 
         

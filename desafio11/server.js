@@ -10,8 +10,8 @@ const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
-let mensajes = []
- const chat = new container();
+ let mensajes = []
+ let chat = new container();
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
@@ -33,21 +33,21 @@ app.use(express.static("public"))
 
 io.on('connection', async socket =>{
     const listaMensajes = await chat.getChat()
-
     const autor = new schema.Entity('autor')
     const mensajes = new schema.Entity('mensajes', {
       autores: [autor]
     })
     const objNormalizado = normalize(listaMensajes, mensajes)
     const objDenormalizado = denormalize(objNormalizado.result, mensajes, objNormalizado.entities)
-    print(listaMensajes);
+    // print(listaMensajes);
   
   
     
     socket.emit('messages', listaMensajes)
   
     socket.on('new-message', async data => {
-      await chat.addChat({...data, fyh: new Date().toLocaleString()})
+      console.log(data)
+      await chat.addChat(data)
   
       io.sockets.emit('messages', listaMensajes)
     })
