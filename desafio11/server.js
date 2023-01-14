@@ -33,22 +33,37 @@ app.use(express.static("public"))
 
 io.on('connection', async socket =>{
     const listaMensajes = await chat.getChat()
-    const autor = new schema.Entity('autor')
-    const mensajes = new schema.Entity('mensajes', {
+    const strin = JSON.stringify(listaMensajes)
+    const data = JSON.parse(strin)
+    const mensajesId = {
+      id: 'backendCoder',
+      messages: data
+    };
+    const autor = new schema.Entity('autor',{},{idAttribute: "email"})
+    const messageSchema = new schema.Entity('mensaje', {
       autores: [autor]
     })
-    const objNormalizado = normalize(listaMensajes, mensajes)
-    const objDenormalizado = denormalize(objNormalizado.result, mensajes, objNormalizado.entities)
-    // print(listaMensajes);
+    const messagesSchema = new schema.Entity("messages", {
+      messages: [messageSchema]
+    });
   
+    const messagesNorm = normalize(mensajesId, messagesSchema);
+
+
+    const compresion =100 - JSON.stringify(messagesNorm).length * 100 / JSON.stringify(mensajes).length + "%"
+
   
     
-    socket.emit('messages', listaMensajes)
-  
+    socket.emit('messages', messagesNorm)
+    socket.emit("compres",compresion)
     socket.on('new-message', async data => {
-      console.log(data)
-      await chat.addChat(data)
+
+      if (listaMensajes.length === 0) {
+        return await chat.addChat({...data, id: 1})
+      }
+      await chat.addChat({...data, id: listaMensajes.length +1})
   
+    
       io.sockets.emit('messages', listaMensajes)
     })
   })
