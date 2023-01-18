@@ -1,6 +1,10 @@
 const test = require("./routers/test")
+const ingresar = require("./routers/rutaingresar")
 const container = require("./container/contenedor")
 const express = require('express')
+const session = require('express-session')
+const cookieParser = require("cookie-parser")
+const MongoStore = require("connect-mongo")
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
 const { normalize, denormalize, schema } = require('normalizr')
@@ -9,6 +13,7 @@ const util = require ('util')
 const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
+const advancedOptions = {useNewUrlParser: true, useUnifiedTopology:true}
 
  let mensajes = []
  let chat = new container();
@@ -18,6 +23,18 @@ app.use(express.json())
 app.use("/api/productos-test",test)
 app.set('view engine', 'ejs')
 
+app.use(cookieParser())
+app.use(session({
+  store: MongoStore.create({
+    mongoUrl: "mongodb+srv://juliancolli:1234@primercluster.zfdig3v.mongodb.net/?retryWrites=true&w=majority",
+    mongoOptions: advancedOptions
+  }),
+  secret: "coderhouse",
+  resave: false,
+  saveUninitialized: false,
+  rolling: true,
+  cookie: {maxAge: 60000}
+}))
 
 
 app.get('/productos', async (req, res) => {
@@ -25,7 +42,10 @@ app.get('/productos', async (req, res) => {
     res.render('inicio', {mensajes,chat} )
 })
 
-
+app.get('/ingresar', async (req, res) => {
+    
+  res.render('ingresar', ingresar )
+})
 
 
 
