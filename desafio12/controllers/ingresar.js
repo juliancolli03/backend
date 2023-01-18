@@ -1,5 +1,5 @@
 const getUsuario = (req, res) => {
-    const usuario = req.session.nombre
+    const usuario = req.session.text
     if (usuario === null || usuario === undefined) {
         res.render("ingresar")
     }
@@ -9,13 +9,13 @@ const getUsuario = (req, res) => {
 }
 
 const postUsurio = (req, res) => {
-    const usuario = req.body.nombre
-    req.session.nombre = usuario
+    const usuario = req.body.text
+    req.session.text = usuario
     res.redirect("/productos")
 }
 
 const getSalir = (req, res) => {
-    const usuario = req.session.nombre
+    const usuario = req.session.text
     const saludo = `Hasta luego ${usuario}`
     req.session.destroy( err => {
         if (err){

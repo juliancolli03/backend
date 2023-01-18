@@ -4,7 +4,7 @@ const { Router } = require('express');
 const ingresar = Router();
 
 ingresar.get('/', getUsuario)
-ingresar.post('/', postUsurio)
+ingresar.post('/productos', postUsurio)
 
 ingresar.get('/salir', getSalir)
 

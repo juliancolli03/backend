@@ -37,17 +37,19 @@ app.use(session({
 }))
 
 
-app.get('/productos', async (req, res) => {
-    
-    res.render('inicio', {mensajes,chat} )
-})
+
 
 app.get('/ingresar', async (req, res) => {
     
   res.render('ingresar', ingresar )
 })
 
-
+if(ingresar){
+  app.get('/productos', async (req, res) => {
+    
+    res.render('inicio', {mensajes,chat} )
+})
+}
 
 app.use(express.static("public"))
 
