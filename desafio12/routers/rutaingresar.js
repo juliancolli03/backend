@@ -8,4 +8,4 @@ ingresar.post('/', crearUsuario)
 
 ingresar.get('/salir', salir)
 
-module.exports=ingresar
+module.exports= ingresar

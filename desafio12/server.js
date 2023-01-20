@@ -1,30 +1,24 @@
-const test = require("./routers/test")
-const ingresar = require("./routers/rutaingresar")
-const container = require("./container/contenedor")
 const express = require('express')
 const session = require('express-session')
 const cookieParser = require("cookie-parser")
 const MongoStore = require("connect-mongo")
+const ingresar = require("./routers/rutaingresar")
+const test = require("./routers/test")
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
+const container = require("./container/contenedor")
 const { normalize, denormalize, schema } = require('normalizr')
 const util = require ('util')
 
+let chat = new container();
 const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 const advancedOptions = {useNewUrlParser: true, useUnifiedTopology:true}
 
- let mensajes = []
- let chat = new container();
-
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-
-app.use("/api/productos-test",test)
+let mensajes = []
+app.set('views', './views')
 app.set('view engine', 'ejs')
-app.use('/ingresar', ingresar);
-
 app.use(cookieParser())
 app.use(session({
   store: MongoStore.create({
@@ -37,14 +31,24 @@ app.use(session({
   rolling: true,
   cookie: {maxAge: 60000}
 }))
-
-  app.get('/productos', async (req, res) => {
-    
-    res.render('inicio', {mensajes,chat} )
+app.use(express.static("public"))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use('/ingresar', ingresar);
+app.use("/api/productos-test",test)
+app.get('/productos', async (req, res) => {
+  const usuario = req.session.text
+  if (usuario === null || usuario === undefined) {
+      return res.redirect("/ingresar")
+  }
+  res.render('inicio', {mensajes,chat,usuario} )
 })
 
 
-app.use(express.static("public"))
+
+
+
+
 
 io.on('connection', async socket =>{
     const listaMensajes = await chat.getChat()
@@ -64,7 +68,7 @@ io.on('connection', async socket =>{
   
     const messagesNorm = normalize(mensajesId, messagesSchema);
 
-    print(messagesNorm)
+    // print(messagesNorm)
 
     const compresion =100 - JSON.stringify(messagesNorm).length * 100 / JSON.stringify(mensajesId).length + "%"
 

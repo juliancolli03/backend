@@ -1,7 +1,8 @@
 const getUsuario = (req, res) => {
     const usuario = req.session.text
+    // console.log(usuario)
     if (usuario === null || usuario === undefined) {
-        res.render("inicioDelngreso")
+        res.render("inicioDeIngreso")
     }
     else{
         res.redirect("/productos")
