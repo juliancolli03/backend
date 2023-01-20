@@ -1,13 +1,11 @@
-const {getSalir,getUsuario,postUsurio} = require("../controllers/ingresar")
+const {crearUsuario,getUsuario,salir} = require("../controllers/ingresar")
 const { Router } = require('express');
 
 const ingresar = Router();
 
 ingresar.get('/', getUsuario)
-ingresar.post('/productos', postUsurio)
+ingresar.post('/', crearUsuario)
 
-ingresar.get('/salir', getSalir)
+ingresar.get('/salir', salir)
 
-module.exports={
-    ingresar
-}
+module.exports=ingresar

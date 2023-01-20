@@ -1,20 +1,21 @@
 const getUsuario = (req, res) => {
     const usuario = req.session.text
     if (usuario === null || usuario === undefined) {
-        res.render("ingresar")
+        res.render("inicioDelngreso")
     }
     else{
         res.redirect("/productos")
     }
 }
 
-const postUsurio = (req, res) => {
+const crearUsuario = (req, res) => {
     const usuario = req.body.text
+    console.log(usuario)
     req.session.text = usuario
     res.redirect("/productos")
 }
 
-const getSalir = (req, res) => {
+const salir = (req, res) => {
     const usuario = req.session.text
     const saludo = `Hasta luego ${usuario}`
     req.session.destroy( err => {
@@ -28,6 +29,6 @@ const getSalir = (req, res) => {
 
 module.exports = {
     getUsuario,
-    postUsurio,
-    getSalir
+    crearUsuario,
+    salir
 }

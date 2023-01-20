@@ -20,8 +20,10 @@ const advancedOptions = {useNewUrlParser: true, useUnifiedTopology:true}
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+
 app.use("/api/productos-test",test)
 app.set('view engine', 'ejs')
+app.use('/ingresar', ingresar);
 
 app.use(cookieParser())
 app.use(session({
@@ -36,20 +38,11 @@ app.use(session({
   cookie: {maxAge: 60000}
 }))
 
-
-
-
-app.get('/ingresar', async (req, res) => {
-    
-  res.render('ingresar', ingresar )
-})
-
-if(ingresar){
   app.get('/productos', async (req, res) => {
     
     res.render('inicio', {mensajes,chat} )
 })
-}
+
 
 app.use(express.static("public"))
 
