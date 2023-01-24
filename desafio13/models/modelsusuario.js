@@ -10,4 +10,4 @@ const schemaUsuario = new mongoose.Schema({
 
 const modelsUsuario = mongoose.model(collectionUsuario, schemaUsuario);
 
-export default modelsUsuario;
+module.exports= modelsUsuario
