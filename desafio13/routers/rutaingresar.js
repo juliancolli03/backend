@@ -1,4 +1,4 @@
-const {crearUsuario,getUsuario,salir} = require("../controllers/ingresar")
+const {getUsuario,salir} = require("../controllers/ingresar")
 const container = require("../container/contenedor")
 const passport = require ("passport")
 const LocalStrategy = require("passport-local").Strategy
@@ -17,7 +17,6 @@ function createHash(password) {
 passport.use("register", new LocalStrategy({
     passReqToCallback: true,
 }, async (req, username, password, done) => {
-
     const { name } = req.body;
     const usuario = await dbUsuario.getUsuario(username);
 
@@ -31,8 +30,7 @@ passport.use("register", new LocalStrategy({
         name,
     };
 
-    dbUsuario.addUsuario(newUser);
-
+   const dataUser = await dbUsuario.addUsuario(newUser);
     done(null, newUser);
 }));
 
@@ -64,13 +62,13 @@ passport.deserializeUser(async (username, done) => {
     done(null, usuario);
 });
 
-ingresar.get("/", crearUsuario);
+ingresar.get("/", getUsuario);
 ingresar.post("/", passport.authenticate("login", { 
     failureRedirect: "/ingresar/errorIngresar", 
     successRedirect: "/productos",
 }));
-ingresar.get("/errorIngresar", (req, res) => {
-    res.render("login-error");
+ingresar.get("/errorIngresar", (req, res,done) => {
+    done("error de log in");
 });
 
 registrarse.get("/", getUsuario);
@@ -78,8 +76,8 @@ registrarse.post("/", passport.authenticate("register", {
     failureRedirect: "/registrarse/errorRegistro", 
     successRedirect: "/productos",
 }));
-registrarse.get("/errorRegistro", (req, res)=> {
-    res.render("register-error");
+registrarse.get("/errorRegistro", (req, res,done)=> {
+    done("error de registro");
 });
 
 salirse.get("/", salir);

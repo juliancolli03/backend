@@ -1,16 +1,10 @@
 const getUsuario = (req, res) => {
     if (req.isAuthenticated()) {
-        res.redirect("/productos")
+        return res.redirect("/productos")
     }
-    res.render("inicioDeIngreso")
+    return res.render("inicioDeIngreso")
+    
 };
-
-const crearUsuario = (req, res) => {
-    if (req.isAuthenticated()) {
-        res.redirect("/productos")
-    }
-    res.render("registrate")
-}
 
 const salir = (req, res) => {
     const usuario = req.user.text;
@@ -22,6 +16,6 @@ const salir = (req, res) => {
 
 module.exports = {
     getUsuario,
-    crearUsuario,
+    
     salir
 }

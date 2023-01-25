@@ -8,7 +8,7 @@ const {ingresar,salirse,registrarse} = require("./routers/rutaingresar")
 const test = require("./routers/test")
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
-const container = require("./container/contenedor")
+const container = require("./container/contenedorchat")
 const { normalize, denormalize, schema } = require('normalizr')
 const util = require ('util')
 const passport = require("passport")
@@ -44,7 +44,8 @@ app.use("/registrarse", registrarse);
 app.use("/salir", salirse);
 app.use("/api/productos-test",test)
 app.get('/productos', async (req, res) => {
-  const usuario = req.session.text
+  const usuario = req.user.username
+  console.log(req.user)
   if (usuario === null || usuario === undefined) {
       return res.redirect("/ingresar")
   }
