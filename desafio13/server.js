@@ -44,8 +44,7 @@ app.use("/registrarse", registrarse);
 app.use("/salir", salirse);
 app.use("/api/productos-test",test)
 app.get('/productos', async (req, res) => {
-  const usuario = req.user.username
-  console.log(req.user)
+  const usuario = req.user
   if (usuario === null || usuario === undefined) {
       return res.redirect("/ingresar")
   }
