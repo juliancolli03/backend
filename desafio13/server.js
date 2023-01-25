@@ -41,10 +41,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/ingresar', ingresar)
 app.use("/registrarse", registrarse);
-app.use("/salir", salirse);
+app.use("/salirse", salirse);
 app.use("/api/productos-test",test)
 app.get('/productos', async (req, res) => {
-  const usuario = req.user
+  const usuario = req.user.name
   if (usuario === null || usuario === undefined) {
       return res.redirect("/ingresar")
   }

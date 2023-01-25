@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
 const modelsChat = require("../models/modelsChat")
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb+srv://juliancolli:1234@primercluster.zfdig3v.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb://localhost:27017/usuario", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('MongoDB Connected');
-    }
+   
 });
 
 

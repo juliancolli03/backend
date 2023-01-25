@@ -7,7 +7,7 @@ const getUsuario = (req, res) => {
 };
 
 const salir = (req, res) => {
-    const usuario = req.user.text;
+    const usuario = req.user.name;
     req.logout(err => {
         const saludo = `Hasta luego ${usuario}`;
         res.render("saludo", {saludo});
@@ -16,6 +16,5 @@ const salir = (req, res) => {
 
 module.exports = {
     getUsuario,
-    
     salir
 }
