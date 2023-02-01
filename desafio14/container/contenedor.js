@@ -3,7 +3,7 @@ const modelsUsuario = require("../models/modelsusuario")
 const dotenv = require("dotenv")
 const path = require("path")
 dotenv.config();
-const MONGO = process.env.DBNUBE;
+const MONGO = process.env.DBLOCAL;
 
 mongoose.set('strictQuery', false);
 mongoose.connect(MONGO, {

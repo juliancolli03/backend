@@ -17,6 +17,7 @@ const passport = require("passport")
 const dotenv = require("dotenv")
 dotenv.config();
 const parseArgs = require('minimist')
+const MONGO = process.env.DBLOCAL;
 
 const config = {
   default: { port: 8080, },
@@ -36,7 +37,7 @@ app.set('view engine', 'ejs')
 app.use(cookieParser())
 app.use(session({
   store: MongoStore.create({
-    mongoUrl: "mongodb+srv://juliancolli:1234@primercluster.zfdig3v.mongodb.net/?retryWrites=true&w=majority",
+    mongoUrl: MONGO,
     mongoOptions: advancedOptions
   }),
   secret: "coderhouse",
