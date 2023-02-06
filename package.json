@@ -33,6 +33,7 @@
     "faker": "^6.6.6",
     "firebase": "^9.15.0",
     "firebase-admin": "^11.4.0",
+    "forever": "^4.0.3",
     "jsonwebtoken": "^9.0.0",
     "knex": "^2.3.0",
     "minimist": "^1.2.7",
