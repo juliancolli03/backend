@@ -1,0 +1,9 @@
+  nodemon server.js -p 8080 -m FORK
+  nodemon server.js -p 8081 -m CLUSTER
+
+forever start server.js
+forever list
+forever stopall
+
+pm2 start server.js --name="ServerFORK" 
+--watch -- 8080
