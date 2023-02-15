@@ -7,3 +7,18 @@ forever stopall
 
 pm2 start server.js --name="ServerFORK" 
 --watch -- 8080
+
+
+
+DESAFIO 16
+
+
+node --prof server.js
+node --prof-process isolatebruto.log > isolateFino.log
+  nodemon server.js -p 8080 -m FORK
+arillery quick -c 50 -n 20 http//localhost:8080/info > resultadoArtilleriFork.txt
+  nodemon server.js -p 8081 -m CLUSTER
+ arillery quick -c 50 -n 20 http//localhost:8080/info > resultadoArtilleriCluster.txt
+node--inspect server.js
+npm run start
+npm run test 

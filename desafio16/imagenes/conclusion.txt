@@ -1,0 +1,2 @@
+se observa que mi servidor en node js, tiene un buen rendimiento
+tambien se observa que un console.log en el modo fork, hace qque el servidor vaya mas lento, en cambio sin console.log tiene una mejor velocidad de respuesta.

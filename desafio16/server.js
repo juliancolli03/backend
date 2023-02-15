@@ -74,7 +74,7 @@ app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/info',compression(), info)
-app.use('/apirandom', apiRandom)
+// app.use('/apirandom', apiRandom)
 app.use('/ingresar', ingresar, ()=>{
   peligro.warn("ingresa asi podes mandar msj")
 
@@ -141,7 +141,7 @@ io.on('connection', async socket =>{
   
   
   function print(objeto) {
-      console.log(util.inspect(objeto,false,12,true))
+      // console.log(util.inspect(objeto,false,12,true))
   }
 
 
@@ -150,7 +150,7 @@ io.on('connection', async socket =>{
 httpServer.listen(PORT, () => {
   todos.info("iniciando server")
 
-    console.log(`Servidor escuchando en el puerto ${PORT}`)
+     console.log(`Servidor escuchando en el puerto ${PORT}`)
 })
 
 

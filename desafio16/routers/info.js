@@ -25,6 +25,7 @@ const info = Router();
 
 info.get("/", (req, res) => {
     res.json(datos)
+    console.log(datos)
 });
 
 module.exports=info

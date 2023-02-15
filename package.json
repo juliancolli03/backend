@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node desafio16/autocanon.js",
+    "start": "0x desafio16/server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
     "@babel/preset-env": "^7.20.2",
     "@faker-js/faker": "^7.6.0",
     "@google-cloud/firestore": "^6.4.1",
+    "0x": "^5.4.1",
+    "autocannon": "^7.10.0",
     "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
