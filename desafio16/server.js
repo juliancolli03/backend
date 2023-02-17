@@ -133,7 +133,7 @@ io.on('connection', async socket =>{
       })
   
     
-      io.sockets.emit('menssages', listaMensajes)
+      io.sockets.emit('menssages',  await chat.getChat())
     })
       todos.info("mandando msj")
 
@@ -149,9 +149,7 @@ io.on('connection', async socket =>{
 
 httpServer.listen(PORT, () => {
   todos.info("iniciando server")
-
-     console.log(`Servidor escuchando en el puerto ${PORT}`)
+    console.log(`Servidor escuchando en el puerto ${PORT}`)
 })
-
 
 }
