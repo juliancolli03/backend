@@ -3,7 +3,6 @@ const getUsuario = (req, res) => {
         return res.redirect("/productos")
     }
     return res.render("iniciodeingreso")
-    
 };
 
 const salir = (req, res) => {
