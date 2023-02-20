@@ -68,6 +68,7 @@ app.use(session({
   rolling: true,
   cookie: {maxAge: 100000}
 }))
+
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.static("public"))
