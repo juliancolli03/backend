@@ -4,7 +4,7 @@
   "main": "script.js",
   "scripts": {
     "test": "node desafio16/autocanon.js",
-    "start": "0x desafio16/server.js"
+    "start": "desafio16/node server.js"
   },
   "repository": {
     "type": "git",

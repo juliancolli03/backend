@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const modelsChat = require("../models/modelsChat")
 const dotenv = require("dotenv")
 dotenv.config();
-const MONGO = process.env.DBLOCAL;
+const MONGO = process.env.DBNUBE;
 
 mongoose.set('strictQuery', false);
 mongoose.connect(MONGO, {

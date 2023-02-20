@@ -19,15 +19,15 @@ const passport = require("passport")
 const dotenv = require("dotenv")
 dotenv.config();
 const parseArgs = require('minimist')
-const MONGO = process.env.DBLOCAL;
+const MONGO = process.env.DBNUBE;
 
-const { PORT, MODE } = parseArgs(process.argv.slice(2), { 
+const {MODE} = parseArgs(process.argv.slice(2), { 
   alias: { 
     p: "PORT",
     m: "MODE",
   },
   default: { 
-    PORT: 8080,
+    // PORT: 8080,
     MODE: "FORK",
   }
 })
@@ -147,9 +147,10 @@ io.on('connection', async socket =>{
 
 // const PORT = 8080
 
-httpServer.listen(PORT, () => {
+const puerto  = process.env.PORT || 8080
+httpServer.listen(puerto, () => {
   todos.info("iniciando server")
-    console.log(`Servidor escuchando en el puerto ${PORT}`)
+    console.log(`Servidor escuchando en el puerto ${puerto}`)
 })
 
 }
