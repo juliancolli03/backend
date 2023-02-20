@@ -2,7 +2,7 @@ const getUsuario = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect("/productos")
     }
-    return res.render("inicioDeIngreso")
+    return res.render("iniciodeingreso")
     
 };
 
