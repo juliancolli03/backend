@@ -151,3 +151,19 @@
 {"level":30,"time":1677523882684,"pid":11204,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
 {"level":30,"time":1677523882747,"pid":11204,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
 {"level":30,"time":1677606956150,"pid":2452,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677607408329,"pid":9500,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677607436635,"pid":9500,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1677607436688,"pid":9500,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1677607657656,"pid":7496,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677607681036,"pid":7496,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1677607681085,"pid":7496,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1677607875772,"pid":8848,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677607886247,"pid":588,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677607980044,"pid":8196,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677608005903,"pid":8924,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677608097251,"pid":7176,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677608193014,"pid":2488,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677608225392,"pid":2296,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677608267375,"pid":2224,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677608325229,"pid":5956,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1677608339599,"pid":3116,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}

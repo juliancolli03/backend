@@ -18,7 +18,7 @@ function createHash(password) {
 passport.use("register", new LocalStrategy({
     passReqToCallback: true,
 }, async (req, username, password, done) => {
-    const { name } = req.body;
+    const { name, direccion, numero, foto } = req.body;
     const usuario = await dbUsuario.getUsuario(username);
 
     if (usuario) {
@@ -29,6 +29,9 @@ passport.use("register", new LocalStrategy({
         username,
         password: createHash(password),
         name,
+        direccion,
+        numero,
+        foto,
     };
 
    const dataUser = await dbUsuario.addUsuario(newUser);
