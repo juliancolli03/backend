@@ -7,8 +7,10 @@ const schemaUsuario = new mongoose.Schema({
     username: String,
     password: String,
     direccion: String,
-    numero: String,
-    foto: String
+    numero: Number,
+    edad: Number,
+    foto: String,
+    urlfoto: String,
 });
 
 const modelsUsuario = mongoose.model(collectionUsuario, schemaUsuario);

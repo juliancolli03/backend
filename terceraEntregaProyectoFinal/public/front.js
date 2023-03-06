@@ -41,12 +41,7 @@ function addMsj() {
     }
     
     socket.emit('new-message', message)
-
-    
-
-    //   return false
-
-
-        
-    
 }
+
+
+console.log(foto)

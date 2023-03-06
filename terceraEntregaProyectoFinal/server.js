@@ -13,6 +13,7 @@ const container = require("./container/contenedorchat")
 const { normalize, denormalize, schema } = require('normalizr')
 const passport = require("passport")
 const dotenv = require("dotenv")
+const multer = require("multer")
 dotenv.config();
 const parseArgs = require('minimist')
 const MONGO = process.env.DBNUBE;
@@ -81,10 +82,12 @@ app.use("/api/productos-test",test)
 app.get('/productos', async (req, res) => {
   peligro.warn("tenes q estar loguado para entrar aca")
   const usuario = req.user.name
+  const fotohtml = req.user.urlfoto
+  const fotonormal = req.user.foto
   if (usuario === null || usuario === undefined) {
       return res.redirect("/ingresar")
   }
-  res.render('inicio', {mensajes,chat,usuario} )
+  res.render('inicio', {mensajes,chat,usuario,fotohtml,fotonormal} )
 })
 
 
