@@ -4,10 +4,10 @@ const collectionCart = 'carrito';
 
 const schemaCart = new mongoose.Schema({
 	author: {
-		name: { type: String},
-		address: { type: String },
-		phoneNumber: { type: Number},
-		username: { type: String},
+		name: String,
+		direccion: String,
+		numero: Number,
+		username: String,
 	},
 	productos: [],
 	timestamp: String,

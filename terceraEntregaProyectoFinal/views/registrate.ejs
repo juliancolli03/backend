@@ -2,15 +2,29 @@
 <br>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 <form action="/registrarse" method="post">
     <input type="text" class="my-2" id="text" placeholder="nombre" name="name" required> <br>
     <input type="email" class="my-2" id="username" placeholder="tu mail" name="username" required> <br>
     <input type="password" class="my-2" id="password" name="password" placeholder="contraseña a crear" required> <br>
     <input type="text" class="my-2" id="direccion" placeholder="direccion" name="direccion" required> <br>
-    <input type="number" class="my-2" id="numero" placeholder="whatsapp" name="numero" required> <br>
+    <!-- <input type="number" class="my-2" id="numero" placeholder="whatsapp" name="numero" required> <br> -->
+    <input id="numero" class="my-2"  type="tel" name="numero" required  placeholder="whatsapp" /> <br>
     <input type="number" class="my-2" id="edad" placeholder="edad" name="edad" required> <br>
     <input type="file" class="my-2" id="foto" name="foto" > <br>
     <input type="text" class="my-2" id="urlfoto" placeholder="urlfoto" name="urlfoto"> <br>
     <button>Ingresar</button>
   </form>
+
+  <script>
+    const phoneInputField = document.querySelector("#numero");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+  </script>
