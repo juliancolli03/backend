@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
 
-const carritoCollection = "carrito"
+const collectionCart = 'carrito';
 
-const carritoSchema = new mongoose.Schema({
-    timestamp: String,
-    productos: [],
-})
+const schemaCart = new mongoose.Schema({
+	author: {
+		name: { type: String},
+		address: { type: String },
+		phoneNumber: { type: Number},
+		username: { type: String},
+	},
+	productos: [],
+	timestamp: String,
+});
 
-const cartModels =   mongoose.model(carritoCollection, carritoSchema)
+const modelCart = mongoose.model(collectionCart, schemaCart);
 
-module.exports = cartModels
+module.exports=modelCart;
