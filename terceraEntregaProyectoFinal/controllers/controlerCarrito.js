@@ -5,7 +5,7 @@ const carrito = new containerCart();
 const producto = new containerProducts();
 
  const getCarrito = (req, res) => {
-    console.log(req.user)
+    // console.log(req.username)
 
     const correo = req.user.username;
 

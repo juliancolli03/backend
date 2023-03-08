@@ -47,6 +47,12 @@ class containerProducts {
 			console.log(err);
 		}
 	}
+	async getId(id) {
+	
+			const data = await modelProduc.findById(id);
+			return data;
+		
+	}
 
 	async delete(id) {
 		try {
