@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser")
 const os = require('os')
 const MongoStore = require("connect-mongo")
 const {ingresar,salirse,registrarse} = require("./routers/rutaingresar")
-const test = require("./routers/test")
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
 const container = require("./container/contenedorchat")
@@ -14,6 +13,8 @@ const { normalize, denormalize, schema } = require('normalizr')
 const passport = require("passport")
 const dotenv = require("dotenv")
 const multer = require("multer")
+const productos = require("./routers/rutaproducto")
+const carrito = require("./routers/rutacarrito")
 dotenv.config();
 const parseArgs = require('minimist')
 const MONGO = process.env.DBNUBE;
@@ -78,7 +79,6 @@ app.use('/ingresar', ingresar, ()=>{
 })
 app.use("/registrarse", registrarse);
 app.use("/salirse", salirse);
-app.use("/api/productos-test",test)
 app.get('/productos', async (req, res) => {
   peligro.warn("tenes q estar loguado para entrar aca")
   const usuario = req.user.name
@@ -89,12 +89,8 @@ app.get('/productos', async (req, res) => {
   }
   res.render('inicio', {mensajes,chat,usuario,fotohtml,fotonormal} )
 })
-
-
-
-
-
-
+app.use("/productoos",productos)
+app.use("/carrito",carrito)
 
 io.on('connection', async socket =>{
   todos.info("conectado al socket. listo para mandar msj")

@@ -20,34 +20,35 @@ class containerCart {
 			const cartAdd = await dataAdd.save();
 			return cartAdd;
 		} catch (err) {
-			logger.error('Error al guardar el carrito ' + err);
+			console.log(err)
 		}
 	}
 
 	async getCart(correo) {
 		try {
-			const cart = await cartModels.find({ author: { username: correo } });
+			const cart = await cartModels.find({ 'autor.username': correo }
+			);
 			return cart;
 		} catch (err) {
-			logger.error('Error al buscar el carrito ' + err);
+			console.log('Error al buscar el carrito ' + err);
 		}
 	}
 
 	async updateCart(correo, data) {
 		try {
-			const producUpdate = await cartModels.updateOne({ author: { username: correo } }, data);
+			const producUpdate = await cartModels.updateOne({ 'autor.username': correo }, data);
 			return producUpdate;
 		} catch (err) {
-			logger.error('Error al buscar el carrito y actualizar ' + err);
+			console.log('Error al buscar el carrito y actualizar ' + err);
 		}
 	}
 
 	async deleteCart(correo) {
 		try {
-			const producDelete = await cartModels.deleteOne({ author: { username: correo } });
+			const producDelete = await cartModels.deleteOne({ 'autor.username': correo });
 			return producDelete;
 		} catch (error) {
-			logger.error('Error al borrar el carrito ' + err);
+			console.log('Error al borrar el carrito ' + err);
 		}
 	}
 }

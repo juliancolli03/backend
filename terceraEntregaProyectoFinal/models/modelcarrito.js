@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const collectionCart = 'carrito';
 
 const schemaCart = new mongoose.Schema({
-	author: {
+	autor: {
 		name: String,
 		direccion: String,
 		numero: Number,

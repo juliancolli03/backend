@@ -152,3 +152,39 @@
 {"level":30,"time":1678239659417,"pid":11364,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
 {"level":30,"time":1678239729736,"pid":11564,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
 {"level":30,"time":1678239748770,"pid":12816,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678297592938,"pid":9220,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678297654482,"pid":9220,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678297654537,"pid":9220,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678297911535,"pid":5672,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678298948108,"pid":11972,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678300927949,"pid":4804,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678301260284,"pid":11128,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678301356637,"pid":3584,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678301416014,"pid":11548,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678301875174,"pid":7076,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678301935091,"pid":2988,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302319672,"pid":2316,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302356306,"pid":8976,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302439669,"pid":8976,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678302439739,"pid":8976,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678302500885,"pid":4996,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302504710,"pid":4996,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678302504776,"pid":4996,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678302513375,"pid":4996,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678302513449,"pid":4996,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678302570982,"pid":9176,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302572244,"pid":9176,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678302572341,"pid":9176,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678302604493,"pid":1208,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302604702,"pid":1208,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678302605490,"pid":1208,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678302631471,"pid":8616,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302649346,"pid":5220,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302656450,"pid":5220,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678302656534,"pid":5220,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678302713599,"pid":3504,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
+{"level":30,"time":1678302713769,"pid":3504,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678302714571,"pid":3504,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678303144214,"pid":3504,"hostname":"DESKTOP-01ODNPC","msg":"conectado al socket. listo para mandar msj"}
+{"level":30,"time":1678303144262,"pid":3504,"hostname":"DESKTOP-01ODNPC","msg":"mandando msj"}
+{"level":30,"time":1678303192156,"pid":7012,"hostname":"DESKTOP-01ODNPC","msg":"iniciando server"}
