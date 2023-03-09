@@ -17,6 +17,7 @@ const productos = require("./routers/rutaproducto")
 const carrito = require("./routers/rutacarrito")
 dotenv.config();
 const parseArgs = require('minimist')
+const nodemailer = require("nodemailer")
 const MONGO = process.env.DBNUBE;
 
 const {MODE} = parseArgs(process.argv.slice(2), { 
@@ -77,17 +78,40 @@ app.use('/ingresar', ingresar, ()=>{
   peligro.warn("ingresa asi podes mandar msj")
 
 })
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  port: 587,
+  auth: {
+    user: 'pruebacoder1211@gmail.com',
+    pass: 'zryrpwputqicxqrz',
+  },
+  tls: {
+    rejectUnauthorized: false
+}
+})
+function info(nombre,correo,direccion,numero,edad){
+transporter.sendMail({
+  from: 'pruebacoder1211@gmail.com',
+  to: 'pruebacoder1211@gmail.com',
+  subject: "nuevo registro",
+  text: `se registro la siguiente persona: Su nombre es: ${nombre},su correo es ${correo},vive en ${direccion}, su numero es ${numero} y tiene ${edad} años.`
+})}
 app.use("/registrarse", registrarse);
 app.use("/salirse", salirse);
 app.get('/productos', async (req, res) => {
   peligro.warn("tenes q estar loguado para entrar aca")
   const usuario = req.user.name
+  const correo = req.user.username
+  const direccion = req.user.direccion
+  const numero = req.user.numero
+  const edad = req.user.edad
   const fotohtml = req.user.urlfoto
   const fotonormal = req.user.foto
   if (usuario === null || usuario === undefined) {
       return res.redirect("/ingresar")
   }
   res.render('inicio', {mensajes,chat,usuario,fotohtml,fotonormal} )
+  info(usuario,correo,direccion,numero,edad)
 })
 app.use("/productoos",productos)
 app.use("/carrito",carrito)

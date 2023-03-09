@@ -24,9 +24,9 @@ const postProductoCarrito = (req, res) => {
 	const correo = req.user.username;
 	const idProducto = req.body.id;
 	carrito.getCart(correo).then((cart) => {
-		if (cart === null) {
+		if (!cart.length) {
 			const newCart = {
-				author: {
+				autor: {
 					nombre: req.user.nombre,
 					direccion: req.user.direccion,
 					numero: req.user.numero,
@@ -42,6 +42,7 @@ const postProductoCarrito = (req, res) => {
 		let product = producto;
 		carrito.updateCart(correo, { $push: { productos: product } });
 	});
+	res.json(carrito)
 };
 const deleteProductoCarrito = (req, res) => {
 	const idProducto = req.body.id;
@@ -50,14 +51,16 @@ const deleteProductoCarrito = (req, res) => {
 	producto.getId(idProducto).then((producto) => {
 		let product = producto;
 		carrito.updateCart(idCarrito, { $pull: { productos: product } });
-		// res.redirect('/carrito');
+		
 	});
+
+	res.json(carrito)
 };
 
  const deleteCarrito = (req, res) => {
 	carrito
 		.deleteCart(req.user.username)
-		
+	res.json(carrito)
 };
 
 module.exports={getCarrito,postProductoCarrito,deleteCarrito,deleteProductoCarrito}
