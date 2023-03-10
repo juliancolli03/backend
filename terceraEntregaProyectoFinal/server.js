@@ -1,6 +1,6 @@
 const express = require('express')
 const accountSid = 'AC81213771cb461f40ee3ab79d38e49664';
-const authToken = '41c265fb44dab2331926ef1ee2555a3e';
+const authToken = '6efd92a67705cb497b50aad006735844';
 const client = require('twilio')(accountSid, authToken);
 const cluster = require('cluster')
 const session = require('express-session')
@@ -127,26 +127,18 @@ let carritoo = await miCarrito.getCart(correo)
  console.log(productosCarro)
  res.json("gracias por tu compra")
  client.messages
- .create({
-     body: 'Nuevo pedido de' + productosCarro + ". El nombre del q lo solicto es "+ usuario +"y su mail es " + correo,
-     from: 'whatsapp:+14155238886',
-     to: 'whatsapp:+5491169253825'
+.create({
+    body: "Nuevo pedido de" + productosCarro + ". El nombre del q lo solicto es "+ usuario +"y su mail es " + correo,
+    from: 'whatsapp:+14155238886',
+    to: 'whatsapp:+5491169253825'
  })
+ 
  transporter.sendMail({
   from: 'pruebacoder1211@gmail.com',
   to: 'pruebacoder1211@gmail.com',
   subject: "nuevo pedido de"+usuario+correo,
   text: `se registro un nuevo pedido: ${productosCarro} `
 })
-
- 
-// client.messages 
-//       .create({ 
-//          body: 'trancaputo',
-//          from: '+14155238886',        
-//          to: '+5491169253825' 
-//        }) 
-//       .then(message => console.log(message.sid)) 
       
 })
 
