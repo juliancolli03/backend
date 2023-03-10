@@ -22,9 +22,9 @@ const producto = new containerProducts();
 
 const postProductoCarrito = (req, res) => {
 	const correo = req.user.username;
-	const idProducto = req.body.id;
+	const idProducto = req.params.id;
 	carrito.getCart(correo).then((cart) => {
-		if (!cart.length) {
+		if (!cart) {
 			const newCart = {
 				autor: {
 					nombre: req.user.nombre,

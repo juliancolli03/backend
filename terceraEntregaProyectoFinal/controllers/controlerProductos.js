@@ -2,7 +2,6 @@ const containerProducts = require("../container/contenedorProd")
 const products = new containerProducts();
 
  const get = (req, res) => {
-
 	products
 		.get()
 		.then((productos) => {

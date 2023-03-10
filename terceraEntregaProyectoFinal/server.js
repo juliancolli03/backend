@@ -1,4 +1,7 @@
 const express = require('express')
+const accountSid = 'AC81213771cb461f40ee3ab79d38e49664';
+const authToken = '41c265fb44dab2331926ef1ee2555a3e';
+const client = require('twilio')(accountSid, authToken);
 const cluster = require('cluster')
 const session = require('express-session')
 const {peligro,error,todos} = require("./log")
@@ -15,6 +18,8 @@ const dotenv = require("dotenv")
 const multer = require("multer")
 const productos = require("./routers/rutaproducto")
 const carrito = require("./routers/rutacarrito")
+const containerCart = require("./container/contenedorCarrito")
+let miCarrito = new containerCart()
 dotenv.config();
 const parseArgs = require('minimist')
 const nodemailer = require("nodemailer")
@@ -73,7 +78,6 @@ app.use(passport.session())
 app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-// app.use('/apirandom', apiRandom)
 app.use('/ingresar', ingresar, ()=>{
   peligro.warn("ingresa asi podes mandar msj")
 
@@ -115,7 +119,36 @@ app.get('/productos', async (req, res) => {
 })
 app.use("/productoos",productos)
 app.use("/carrito",carrito)
+app.use("/hacerpedido", async (req,res)=>{
+  const usuario = req.user.name
+  const correo = req.user.username
+let carritoo = await miCarrito.getCart(correo)
+ let productosCarro = JSON.stringify(carritoo.productos)
+ console.log(productosCarro)
+ res.json("gracias por tu compra")
+ client.messages
+ .create({
+     body: 'Nuevo pedido de' + productosCarro + ". El nombre del q lo solicto es "+ usuario +"y su mail es " + correo,
+     from: 'whatsapp:+14155238886',
+     to: 'whatsapp:+5491169253825'
+ })
+ transporter.sendMail({
+  from: 'pruebacoder1211@gmail.com',
+  to: 'pruebacoder1211@gmail.com',
+  subject: "nuevo pedido de"+usuario+correo,
+  text: `se registro un nuevo pedido: ${productosCarro} `
+})
 
+ 
+// client.messages 
+//       .create({ 
+//          body: 'trancaputo',
+//          from: '+14155238886',        
+//          to: '+5491169253825' 
+//        }) 
+//       .then(message => console.log(message.sid)) 
+      
+})
 
 io.on('connection', async socket =>{
   todos.info("conectado al socket. listo para mandar msj")
@@ -164,8 +197,6 @@ io.on('connection', async socket =>{
       // console.log(util.inspect(objeto,false,12,true))
   }
 
-
-// const PORT = 8080
 
 const puerto  = process.env.PORT || 8080
 httpServer.listen(puerto, () => {

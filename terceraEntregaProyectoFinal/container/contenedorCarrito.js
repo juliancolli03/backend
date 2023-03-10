@@ -26,7 +26,7 @@ class containerCart {
 
 	async getCart(correo) {
 		try {
-			const cart = await cartModels.find({ 'autor.username': correo }
+			const cart = await cartModels.findOne({ 'autor.username': correo }
 			);
 			return cart;
 		} catch (err) {
