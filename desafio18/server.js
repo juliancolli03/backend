@@ -92,12 +92,6 @@ app.get('/productos', async (req, res) => {
   res.render('inicio', {mensajes,chat,usuario} )
 })
 
-
-
-
-
-
-
 io.on('connection', async socket =>{
   todos.info("conectado al socket. listo para mandar msj")
     const listaMensajes = await chat.getChat()
