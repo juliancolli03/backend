@@ -7,11 +7,11 @@ const salirse = Router()
 
 
 ingresar.get("/", getUsuario);
-ingresar.post("/", passport.authenticate("login", { 
+ingresar.post("/",passport.authenticate("login", {
     failureRedirect: "/ingresar/errorIngresar", 
     successRedirect: "/productos",
-    
-}));
+}
+));
 ingresar.get("/errorIngresar", (req, res,done) => {
     done("error de log in");
 });

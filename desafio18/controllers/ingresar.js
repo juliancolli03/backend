@@ -1,7 +1,10 @@
+const {peligro,error,todos} = require("../logs/log")
+
 const getUsuario = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect("/productos")
     }
+    peligro.warn("ingresa asi podes mandar msj")
     return res.render("iniciodeingreso")
 };
 
