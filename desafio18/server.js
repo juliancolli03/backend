@@ -1,18 +1,15 @@
 const express = require('express')
 const cluster = require('cluster')
 const session = require('express-session')
-const {peligro,error,todos} = require("./log")
+const {peligro,error,todos} = require("./logs/log")
 const cookieParser = require("cookie-parser")
 const os = require('os')
 const MongoStore = require("connect-mongo")
 const {ingresar,salirse,registrarse} = require("./routers/rutaingresar")
 const compression = require("compression")
-const test = require("./routers/test")
-const info = require("./routers/info")
-const apiRandom = require("./routers/apiRandom")
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
-const container = require("./container/contenedorchat")
+const container = require("./persistencia/container/contenedorchat")
 const { normalize, denormalize, schema } = require('normalizr')
 const util = require ('util')
 const passport = require("passport")
@@ -74,7 +71,6 @@ app.use(passport.session())
 app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use('/info',compression(), info)
 // app.use('/apirandom', apiRandom)
 app.use('/ingresar', ingresar, ()=>{
   peligro.warn("ingresa asi podes mandar msj")
@@ -82,7 +78,6 @@ app.use('/ingresar', ingresar, ()=>{
 })
 app.use("/registrarse", registrarse);
 app.use("/salirse", salirse);
-app.use("/api/productos-test",test)
 app.get('/productos', async (req, res) => {
   peligro.warn("tenes q estar loguado para entrar aca")
   const usuario = req.user.name

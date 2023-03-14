@@ -1,18 +1,18 @@
 const pino = require("pino")
 
 function defaultLogger() {
-    const defaultLogger = pino("todo.log")
+    const defaultLogger = pino("./logs/todo.log")
     defaultLogger.level = "info"
     return defaultLogger
 }
 
 function wariningLog() {
-    const prodLogger = pino('warning.log')
+    const prodLogger = pino('./logs/warning.log')
     prodLogger.level = 'warn'
     return prodLogger
 }
 function errorLog() {
-    const prodLogger = pino('error.log')
+    const prodLogger = pino('./logs/error.log')
     prodLogger.level = 'error'
     return prodLogger
 }
