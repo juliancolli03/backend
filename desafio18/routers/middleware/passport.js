@@ -1,5 +1,5 @@
 const passport = require ("passport")
-const {peligro,error,todos} = require("../../logs/log")
+const {error} = require("../../logs/log")
 const LocalStrategy = require("passport-local").Strategy
 const bCrypt = require("bcrypt")
 const container = require("../../persistencia/container/contenedor")
