@@ -8,14 +8,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelIn
 />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
-<form action="/registrarse" method="post">
+<form action="/registrarse" method="post" enctype="multipart/form-data">
     <input type="text" class="my-2" id="text" placeholder="nombre" name="name" required> <br>
     <input type="email" class="my-2" id="username" placeholder="tu mail" name="username" required> <br>
     <input type="password" class="my-2" id="password" name="password" placeholder="contraseña a crear" required> <br>
     <input type="text" class="my-2" id="direccion" placeholder="direccion" name="direccion" required> <br>
   
     <input type="number" class="my-2" id="numero" placeholder="(cod pais, cod area, numero)" name="numero" required> <br>
- 
+    <input type="file" name="foto" id="foto">
     <input type="number" class="my-2" id="edad" placeholder="edad" name="edad" required> <br>
     <input type="text" class="my-2" id="urlfoto" placeholder="urlfoto" name="urlfoto"> <br>
     <button>Ingresar</button>

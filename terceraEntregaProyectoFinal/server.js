@@ -15,7 +15,7 @@ const container = require("./container/contenedorchat")
 const { normalize, denormalize, schema } = require('normalizr')
 const passport = require("passport")
 const dotenv = require("dotenv")
-const multer = require("multer")
+const upload = require("./multer")
 const productos = require("./routers/rutaproducto")
 const carrito = require("./routers/rutacarrito")
 const containerCart = require("./container/contenedorCarrito")
@@ -24,7 +24,6 @@ dotenv.config();
 const parseArgs = require('minimist')
 const nodemailer = require("nodemailer")
 const MONGO = process.env.DBNUBE;
-
 const {MODE} = parseArgs(process.argv.slice(2), { 
   alias: { 
     p: "PORT",

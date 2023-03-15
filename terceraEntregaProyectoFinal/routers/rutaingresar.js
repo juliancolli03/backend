@@ -5,7 +5,7 @@ const passport = require ("passport")
 const LocalStrategy = require("passport-local").Strategy
 const bCrypt = require("bcrypt")
 const { Router } = require('express');
-
+const upload = require("../multer")
 const dbUsuario = new container();
 const ingresar = Router();
 const registrarse = Router()
@@ -18,8 +18,9 @@ function createHash(password) {
 passport.use("register", new LocalStrategy({
     passReqToCallback: true,
 }, async (req, username, password, done) => {
-    const { name, direccion, numero, foto, edad, urlfoto } = req.body;
+    const { name, direccion, numero, edad, urlfoto } = req.body;
     const usuario = await dbUsuario.getUsuario(username);
+    const {file} = req
 
     if (usuario) {
         return done("el usuario ya esta registrado", false);
@@ -32,7 +33,7 @@ passport.use("register", new LocalStrategy({
         direccion,
         numero,
         edad,
-        foto,
+        foto:file.filename,
         urlfoto,
     };
 
@@ -81,7 +82,8 @@ ingresar.get("/errorIngresar", (req, res,done) => {
 });
 
 registrarse.get("/", getUsuario);
-registrarse.post("/", passport.authenticate("register", {
+registrarse.post("/",upload.single("foto"),
+ passport.authenticate("register", {
     failureRedirect: "/registrarse/errorRegistro", 
     successRedirect: "/productos",
 }));

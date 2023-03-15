@@ -1,8 +1,6 @@
 const {peligro,error,todos} = require("../logs/log")
-const container = require("../persistencia/container/contenedorchat")
+const getInicioModel = require("../servicios/productos.js")
 
-let mensajes = []
-let chat = new container();
 
 const productos =  async (req, res) => {
     peligro.warn("tenes q estar loguado para entrar aca")
@@ -10,7 +8,8 @@ const productos =  async (req, res) => {
     if (usuario === null || usuario === undefined) {
         return res.redirect("/ingresar")
     }
-    res.render('inicio', {mensajes,chat,usuario} )
+    const obj = getInicioModel(usuario)
+    res.render('inicio',obj  )
   }
 
 module.exports=productos
