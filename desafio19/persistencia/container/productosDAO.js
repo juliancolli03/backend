@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const dotenv = require("dotenv")
 const modelProduc = require("../models/modelsProducto")
 dotenv.config();
-
+const dto = require("../dto/productosDTO")
 const MONGO = process.env.DBNUBE;
 
 mongoose.set('strictQuery', false);
@@ -18,7 +18,7 @@ class containerProducts {
 		try {
 			const dataAdd = new modelProduc(data);
 			const add = await dataAdd.save(dataAdd);
-			return add;
+			return dto(add);
 		} catch (err) {
 			console.log(err);
 		}
@@ -29,10 +29,10 @@ class containerProducts {
 			if (name) {
 				const data = await modelProduc.find({ nombre: name });
                 //cambiar a nombre si no va y/o ponerle find
-				return data;
+				return dto(data);
 			} else {
 				const data = await modelProduc.find();
-				return data;
+				return dto(data);
 			}
 		} catch (err) {
 			console.log(err);
@@ -42,7 +42,7 @@ class containerProducts {
 	async update(id, data) {
 		try {
 			const update = await modelProduc.updateOne({ _id: id }, data);
-			return update;
+			return dto (update);
 		} catch (err) {
 			console.log(err);
 		}
@@ -50,14 +50,14 @@ class containerProducts {
 	async getId(id) {
 	
 			const data = await modelProduc.findById(id);
-			return data;
+			return dto(data);
 		
 	}
 
 	async delete(id) {
 		try {
 			const deelete = await modelProduc.deleteOne({ _id: id });
-			return deelete;
+			return dto(deelete);
 		} catch (err) {
 			console.log(err);
 		}

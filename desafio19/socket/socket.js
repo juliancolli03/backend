@@ -8,8 +8,11 @@ const container = require("../persistencia/container/chatDAO")
 const { normalize, denormalize, schema } = require('normalizr')
 const {peligro,error,todos} = require("../logs/log")
 let chat = new container();
+const tipoConec = require("../persistencia/factory/chatFACTORY")
+let mongo =  tipoConec.getDao()
 
 const socketChat = async (socket) =>{
+    if(mongo){
     todos.info("conectado al socket. listo para mandar msj")
     const listaMensajes = await chat.getChat()
     const strin = JSON.stringify(listaMensajes)
@@ -49,6 +52,6 @@ const socketChat = async (socket) =>{
     })
     todos.info("mandando msj")
 
-}
+}}
 
 module.exports= socketChat
