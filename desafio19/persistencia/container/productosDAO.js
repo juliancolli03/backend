@@ -44,6 +44,8 @@ class containerProducts {
 			const update = await modelProduc.updateOne({ _id: id }, data);
 			return dto (update);
 		} catch (err) {
+
+			
 			console.log(err);
 		}
 	}
