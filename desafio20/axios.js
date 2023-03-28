@@ -50,23 +50,24 @@ async function updateByid(id) {
 }
 
 
-const getAllProducts = await getProducts()
+getProducts()
 console.log('-----> Obtener todos los productos');
-console.log(getAllProducts);
+console.log( getProducts());
 
-const addProducto = await addProduct()
+addProduct()
 console.log('-----> Agregar un producto');
-console.log(addProducto);
+console.log(addProduct());
 
-const getProductById = await getById()
+getById()
 console.log('-----> Obtener un producto por id');
-console.log(getProductById);
+console.log(getById());
 
 
-const deleteProductById = await deleteById()
+deleteById()
 console.log('-----> Eliminar un producto por id');
-console.log(deleteProductById);
+console.log(deleteById());
 
-const updateProduct = await updateByid()
+updateByid()
 console.log('-----> Actualizar un producto por id');
-console.log(updateProduct);
+console.log(updateByid()
+);
