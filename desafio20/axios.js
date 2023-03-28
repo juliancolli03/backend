@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require("axios");
 
 async function getProducts() {
     const { data } = await axios('http://localhost:8080/productoos')
@@ -9,7 +9,7 @@ async function addProduct() {
     const data = await axios.post('http://localhost:8080/productoos', {
         nombre: 'producto',
         precio: 100,
-        imagen: 'prueba1.jpg',
+        foto: 'prueba1.jpg',
     })
     return {
         status: data.status,
@@ -36,12 +36,11 @@ async function deleteById() {
 }
 
 
-async function updateByid() {
-    const data = await axios.put('http://localhost:8080/productoos/update', {
+async function updateByid(id) {
+    const data = await axios.put(`http://localhost:8080/productoos/${id}`, {
         nombre: 'producto updated',
         precio: 200,
-        imagen: 'pruebaUpdated.jpg',
-        id: 105
+        foto: 'pruebaUpdated.jpg',
     })
     return {
         status: data.status,

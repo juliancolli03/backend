@@ -1,5 +1,5 @@
-import { expect } from "chai";
-import axios from 'axios'
+const { expect } =  require("chai");
+const axios = require("axios");
 
 async function getProducts() {
     const data = await axios('http://localhost:8080/productoos')
@@ -70,7 +70,7 @@ describe("Comprobando el funcionamiento del servidor", function () {
         const producto = {
             nombre: 'productoDePrueba',
             precio: 100,
-            imagen: 'prueba12.jpg',
+            foto: 'prueba12.jpg',
         }
         const respuesta = await addProduct(producto)
         const data = await getById(respuesta.data)
@@ -89,7 +89,7 @@ describe("Comprobando el funcionamiento del servidor", function () {
         const product = {
             nombre: 'producto updated',
             precio: 200,
-            imagen: 'pruebaUpdated.jpg',
+            foto: 'pruebaUpdated.jpg',
             id: 106
         }
         const updateRes = await updateByid(product)
