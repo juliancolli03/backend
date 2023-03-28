@@ -14,7 +14,7 @@ const products = new containerProducts();
 
  const add = (req, res) => {
 	const correo = req.user.username;
-	if(correo=="jc@gmail.com"){
+	// if(correo=="jc@gmail.com"){
 	const newProduct = {
 		timestamp: Date.now(),
 		nombre: req.body.nombre,
@@ -32,15 +32,15 @@ const products = new containerProducts();
 		.catch((err) => {
 			res.json(err);
 		});
-}
-else{
-	res.json("no estas autorizado a crear productos")
-}
+//}
+// else{
+// 	res.json("no estas autorizado a crear productos")
+// }
 };
 
 const update = (req, res) => {
-	const correo = req.user.username;
-	if(correo=="jc@gmail.com"){
+	// const correo = req.user.username;
+	// if(correo=="jc@gmail.com"){
 
 	const id = req.params.id;
 	const newProduct = {
@@ -61,14 +61,14 @@ const update = (req, res) => {
 		.catch((err) => {
 			res.json(err);
 		});
-}else{
-	res.json("no estas autorizado a actualizar productos")
-}
+// }else{
+// 	res.json("no estas autorizado a actualizar productos")
+// }
 };
 
  const deelete = (req, res) => {
-	const correo = req.user.username;
-	if(correo=="jc@gmail.com"){
+	// const correo = req.user.username;
+	// if(correo=="jc@gmail.com"){
 	const id = req.params.id;
 	products
 		.delete(id)
@@ -78,9 +78,9 @@ const update = (req, res) => {
 		.catch((err) => {
 			res.json(err);
 		});
-}else{
-	res.json("no estas autorizado a borrar productos")
-}
+// }else{
+// 	res.json("no estas autorizado a borrar productos")
+// }
  }
  ;
 
