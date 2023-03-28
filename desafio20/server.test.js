@@ -2,7 +2,7 @@ import { expect } from "chai";
 import axios from 'axios'
 
 async function getProducts() {
-    const data = await axios('http://localhost:8080/productos')
+    const data = await axios('http://localhost:8080/productoos')
     return {
         status: data.status,
         statusText: data.statusText,
@@ -11,7 +11,7 @@ async function getProducts() {
 }
 
 async function addProduct(producto) {
-    const data = await axios.post('http://localhost:8080/productos/save', { ...producto })
+    const data = await axios.post('http://localhost:8080/productoos', { ...producto })
     return {
         status: data.status,
         statusText: data.statusText,
@@ -20,11 +20,11 @@ async function addProduct(producto) {
 }
 
 async function getById(id) {
-    const { data } = await axios(`http://localhost:8080/productos/${id}`)
+    const { data } = await axios(`http://localhost:8080/productoos/${id}`)
     return data[0];
 }
 async function deleteById(id) {
-    const data = await axios.delete(`http://localhost:8080/productos/${id}`)
+    const data = await axios.delete(`http://localhost:8080/productoos/${id}`)
     return {
         status: data.status,
         statusText: data.statusText,
@@ -33,7 +33,7 @@ async function deleteById(id) {
 }
 
 async function updateByid(producto) {
-    const data = await axios.put('http://localhost:8080/productos/update', {
+    const data = await axios.put('http://localhost:8080/productoos', {
        ...producto
     })
     return {

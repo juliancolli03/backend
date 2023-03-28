@@ -5,6 +5,7 @@ const {todos} = require("./logs/log")
 const prodcutos = require("./controllers/productos")
 const cookieParser = require("cookie-parser")
 const os = require('os')
+const productos = require("./routers/rutaproducto")
 const MongoStore = require("connect-mongo")
 const {ingresar,salirse,registrarse} = require("./routers/rutaingresar")
 const { Server: HttpServer } = require('http')
@@ -71,6 +72,7 @@ app.use('/ingresar', ingresar)
 app.use("/registrarse", registrarse);
 app.use("/salirse", salirse);
 app.get('/productos',prodcutos )
+app.use("/productoos",productos)
 io.on('connection', socketChat)
 
 const puerto  = process.env.PORT || 8080

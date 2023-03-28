@@ -1,12 +1,12 @@
 import axios from "axios";
 
 async function getProducts() {
-    const { data } = await axios('http://localhost:8080/productos')
+    const { data } = await axios('http://localhost:8080/productoos')
     return data;
 }
 
 async function addProduct() {
-    const data = await axios.post('http://localhost:8080/productos/save', {
+    const data = await axios.post('http://localhost:8080/productoos', {
         nombre: 'producto',
         precio: 100,
         imagen: 'prueba1.jpg',
@@ -19,7 +19,7 @@ async function addProduct() {
 }
 
 async function getById() {
-    const data = await axios('http://localhost:8080/productos/105')
+    const data = await axios('http://localhost:8080/productoos/105')
     return {
         status: data.status,
         statusText: data.statusText,
@@ -27,7 +27,7 @@ async function getById() {
     };
 }
 async function deleteById() {
-    const data = await axios.delete('http://localhost:8080/productos/102')
+    const data = await axios.delete('http://localhost:8080/productoos/102')
     return {
         status: data.status,
         statusText: data.statusText,
@@ -37,7 +37,7 @@ async function deleteById() {
 
 
 async function updateByid() {
-    const data = await axios.put('http://localhost:8080/products/update', {
+    const data = await axios.put('http://localhost:8080/productoos/update', {
         nombre: 'producto updated',
         precio: 200,
         imagen: 'pruebaUpdated.jpg',
