@@ -13,6 +13,9 @@ const { Server: IOServer } = require('socket.io')
 const passport = require("passport")
 const dotenv = require("dotenv")
 const socketChat = require("./socket/socket")
+const cors = require("cors")
+const productRouter = require('./routers/rutagraphql');
+
 dotenv.config();
 const parseArgs = require('minimist')
 const MONGO = process.env.DBNUBE;
@@ -51,6 +54,7 @@ if (MODE === 'CLUSTER' && cluster.isPrimary) {
 app.set('views', './views')
 app.set('view engine', 'ejs')
 app.use(cookieParser())
+app.use(cors())
 app.use(session({
   store: MongoStore.create({
     mongoUrl: MONGO,
@@ -73,6 +77,7 @@ app.use("/registrarse", registrarse);
 app.use("/salirse", salirse);
 app.get('/productos',prodcutos )
 app.use("/productoos",productos)
+app.use("/graphql",productRouter.startGraphQL())
 io.on('connection', socketChat)
 
 const puerto  = process.env.PORT || 8080
