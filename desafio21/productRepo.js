@@ -4,7 +4,7 @@ module.exports= class ProductRepo {
 	dao
 	prod
 	constructor() {
-		this.dao = DAOFactory.get()
+		this.dao = new DAOFactory()
 		this.prod = this.dao.prodDAO
 	}
 

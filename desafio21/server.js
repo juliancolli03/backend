@@ -15,7 +15,7 @@ const dotenv = require("dotenv")
 const socketChat = require("./socket/socket")
 const cors = require("cors")
 const productRouter = require('./routers/rutagraphql');
-
+const graphqll = new productRouter()
 dotenv.config();
 const parseArgs = require('minimist')
 const MONGO = process.env.DBNUBE;
@@ -77,7 +77,7 @@ app.use("/registrarse", registrarse);
 app.use("/salirse", salirse);
 app.get('/productos',prodcutos )
 app.use("/productoos",productos)
-app.use("/graphql",productRouter.startGraphQL())
+app.use("/graphql",graphqll.startGraphQL())
 io.on('connection', socketChat)
 
 const puerto  = process.env.PORT || 8080
