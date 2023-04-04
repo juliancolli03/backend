@@ -1,4 +1,4 @@
-import prodGraphql from '../repo/productRepo.js';
+const prodGraphql = require('../productRepo');
 
 module.exports= class ProductServices {
     constructor() {
