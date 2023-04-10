@@ -1,8 +1,9 @@
 const express = require('express')
 const koa = require("koa")
 const serve = require("koa-static")
-const koaBody = require("koa-body")
-const views = require("koa")
+const {koaBody} = require("koa-body")
+const views = require("koa-views")
+const routerKoa = require("koa-router")
 const cluster = require('cluster')
 const session = require('express-session')
 const {todos} = require("./logs/log")
@@ -70,6 +71,7 @@ app.use(session({
   rolling: true,
   cookie: {maxAge: 100000}
 }))
+
 app.keys = ['secret'];
 app.use(koaBody());
 app.use(passport.initialize())
@@ -77,7 +79,8 @@ app.use(passport.session())
 app.use(serve("public"))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use('/ingresar', ingresar)
+const ingresarRot = new routerKoa({ prefix: '/ingresar'},ingresar)
+app.use("/",ingresarRot)
 app.use("/registrarse", registrarse);
 app.use("/salirse", salirse);
 app.get('/productos',prodcutos )
