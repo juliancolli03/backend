@@ -1,4 +1,8 @@
 const express = require('express')
+const koa = require("koa")
+const serve = require("koa-static")
+const koaBody = require("koa-body")
+const views = require("koa")
 const cluster = require('cluster')
 const session = require('express-session')
 const {todos} = require("./logs/log")
@@ -31,7 +35,7 @@ const {MODE} = parseArgs(process.argv.slice(2), {
   }
 })
 
-const app = express()
+const app = new koa()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 const advancedOptions = {useNewUrlParser: true, useUnifiedTopology:true}
@@ -51,8 +55,8 @@ if (MODE === 'CLUSTER' && cluster.isPrimary) {
     cluster.fork()
   })
 } else {
-app.set('views', './views')
-app.set('view engine', 'ejs')
+app.use(views("./views", {autoRender: true, extension:"ejs"}))
+// app.set('view engine', 'ejs')
 app.use(cookieParser())
 app.use(cors())
 app.use(session({
@@ -66,10 +70,11 @@ app.use(session({
   rolling: true,
   cookie: {maxAge: 100000}
 }))
-
+app.keys = ['secret'];
+app.use(koaBody());
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(express.static("public"))
+app.use(serve("public"))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/ingresar', ingresar)
@@ -85,5 +90,4 @@ httpServer.listen(puerto, () => {
   todos.info("iniciando server")
     console.log(`Servidor escuchando en el puerto ${puerto}`)
 })
-//creo comentario para probar que se suba a
 }
